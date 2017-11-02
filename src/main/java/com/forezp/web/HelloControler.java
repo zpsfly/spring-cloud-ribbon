@@ -1,7 +1,9 @@
 package com.forezp.web;
 
 import com.forezp.service.HelloService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,5 +25,22 @@ public class HelloControler {
         return helloService.hiService(name);
     }
 
+	@Value("${foo}")
+	String foo;
+	
+	
+	@RequestMapping(value = "/hifoo")
+	public String hi(){
+		return foo;
+	}
+	
+	@Value("${image.url}")
+	String imageurl;
+	
+	
+	@RequestMapping(value = "/imageurl")
+	public String imageUrl(){
+		return imageurl;
+	}
 
 }
